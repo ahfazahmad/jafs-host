@@ -13,6 +13,8 @@
     <meta name="author" content="">
 
     <title>Home | JAFS</title>
+    <link rel="icon" href="images\logo22.png" type="image/png">
+<link rel="icon" href="images\logo22.png" type="image/png">
 
 
 
@@ -47,6 +49,119 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
+    <style>
+        /* Enhanced Service Card Hover Effect */
+
+.services-wrap {
+    position: relative;
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(80,120,200,0.08);  /* blue-tinted shadow */
+    transition:
+        box-shadow 0.4s cubic-bezier(.21,1.02,.73,1.04),
+        transform 0.32s cubic-bezier(.42,0,0,.97),
+        background 0.4s,
+        color 0.22s;
+    padding: 22px 17px;
+    margin-bottom: 32px;
+    overflow: hidden;
+    z-index: 1;
+    /* Optional: add border for more depth */
+}
+
+/* Animated border glow/margin with pseudo-element */
+.services-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 0 -2px -2px 0; /* subtle "bleed" for effect */
+    border-radius: 14px;
+    border: 2px solid transparent;
+    box-shadow: 0 0 0 0 rgba(80,120,200,0.0);
+    transition:
+        border-color 0.35s cubic-bezier(.25,.8,.25,1),
+        box-shadow 0.35s cubic-bezier(.26,.96,.75,.98);
+    pointer-events: none;
+    z-index: 2;
+}
+
+/* Hover Effects */
+a:hover .services-wrap,
+.services-wrap:hover {
+    /* Gradient background on hover */
+    background: linear-gradient(120deg,#e9f4fb 0%,#f3f7fa 100%);
+    box-shadow: 0 14px 38px 0 rgba(34,130,228,0.13), 
+                0 3px 10px 0 rgba(34,130,228,0.07);
+
+    transform: translateY(-6px) scale(1.04) rotate(-1deg); /* subtle rotation */
+    cursor: pointer;
+}
+
+a:hover .services-wrap::after,
+.services-wrap:hover::after {
+    border-color: #a1b6d9;
+    box-shadow: 0 0 0 7px #b4c5e044;
+}
+
+/* ICON/Image ENHANCEMENTS */
+.services-wrap .pull-left img {
+    transition: 
+        transform 0.4s cubic-bezier(.42,0,0,1.02),
+        filter 0.28s;
+    filter: drop-shadow(0 2px 4px rgba(34,130,228,0.09));
+}
+
+a:hover .services-wrap .pull-left img,
+.services-wrap:hover .pull-left img {
+    transform: scale(1.19) rotate(-5deg) translateY(-3px);
+    filter: drop-shadow(0 8px 16px rgba(34,130,228,0.2));
+}
+
+/* Optional: SHIMMER Effect over icon on hover */
+.services-wrap .pull-left {
+    position: relative;
+    overflow: visible;
+}
+
+.services-wrap .pull-left::after {
+    content: '';
+    position: absolute;
+    top: 15%;
+    left: -30%;
+    width: 80%;
+    height: 70%;
+    background: linear-gradient(75deg,rgba(255,255,255,0) 60%,rgba(255,255,255,0.16) 100%);
+    opacity: 0;
+    transition: left 0.7s cubic-bezier(.39,.58,.57,1), opacity 0.24s;
+    pointer-events: none;
+    z-index: 20;
+}
+a:hover .services-wrap .pull-left::after,
+.services-wrap:hover .pull-left::after {
+    left: 80%;
+    opacity: 1;
+}
+
+/* TEXT ENHANCEMENTS */
+.services-wrap .media-heading {
+    transition: color 0.26s, text-shadow 0.32s;
+}
+
+a:hover .services-wrap .media-heading,
+.services-wrap:hover .media-heading {
+    color: #2282e4; /* Your brand blue */
+    text-shadow: 0 1px 6px rgba(34,130,228,0.08);
+}
+
+/* Optional: Description text */
+.services-wrap .media-body p {
+    transition: color 0.28s;
+}
+a:hover .services-wrap .media-body p,
+.services-wrap:hover .media-body p {
+    color: #385d8a;
+}
+
+    </style>
 
 </head>
 <!--/head-->
@@ -480,7 +595,7 @@
             <h2>Our Clients</h2>
             <section class="customer-logos slider">
                 <div class="slide img-thumbnail"><img src="images/client/download.jpg"></div>
-                <div class="slide img-thumbnail"><img src="images/client/godrej-and-boyce-manufacturing-company-limited-dhayari-pune-readymix-concrete-manufacturers-2rnuuji.jpg"></div>
+                <div class="slide img-thumbnail"><img src="images/client/godrejboyce.jpeg" style="height: 70px;"></div>
                 <div class="slide img-thumbnail"><img src="images/client/logo.jpg"></div>
                 <div class="slide img-thumbnail"><img src="images/client/smdhome.jpg"></div>
                 <div class="slide img-thumbnail"><img src="images/client/symbiosis.jpg"></div>
@@ -540,7 +655,7 @@
 
                             <li><a href="#">Terms of use</a></li>
                             <li><a href="#">Privacy policy</a></li>
-                            <li><a href="#">Contact us</a></li>
+                            <li><a href="contact-us.html">Contact us</a></li>
                         </ul>
                     </div>
                 </div>
@@ -604,15 +719,15 @@
                 <div class="col-sm-6">
                     &copy; 2025 Copyright- Reserved by JAFS ENGINEERING
                 </div>
-                <div class="col-sm-6">
+                <!-- <div class="col-sm-6">
                     <ul class="pull-right">
                         <li><a href="home.html">Home</a></li>
                         <li><a href="about-us.html">About Us</a></li>
-                        <!--<li><a href="#">Faq</a></li>-->
+                        <li><a href="#">Faq</a></li>
                         <li><a href="contact-us.html">Contact Us</a></li>
 
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
     </footer>

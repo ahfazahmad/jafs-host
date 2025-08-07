@@ -48,6 +48,168 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
 
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">-->
+    <style>
+/* --- Portfolio Grid & Card Layout --- */
+.portfolio-items {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 16px !important;
+    justify-content: flex-start !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.portfolio-item {
+    flex: 1 1 calc(25% - 16px) !important;
+    max-width: calc(25% - 16px) !important;
+    min-width: 180px !important;
+    margin: 0 !important;
+    perspective: 1000px !important;
+    box-sizing: border-box !important;
+}
+/* Responsive columns */
+@media (max-width: 991px) {
+    .portfolio-item { flex-basis: calc(33.333% - 16px) !important; max-width: calc(33.333% - 16px) !important; }
+}
+@media (max-width: 767px) {
+    .portfolio-item { flex-basis: calc(50% - 16px) !important; max-width: calc(50% - 16px) !important; }
+}
+@media (max-width: 540px) {
+    .portfolio-item { flex-basis: 100% !important; max-width: 100% !important; }
+}
+/* --- Card, Image, and Overlay --- */
+.recent-work-wrap {
+    position: relative !important;
+    background: #f3f5f7 !important;
+    border-radius: 16px !important;
+    box-shadow: 0 3px 26px rgba(34,36,87,0.18) !important;
+    overflow: hidden !important;
+    transition: box-shadow 0.28s cubic-bezier(.23,1.12,.47,1.09) !important;
+}
+.recent-work-wrap:hover {
+    border-radius: 16px !important;
+    box-shadow: 0 3px 26px rgba(34,36,87,0.18) !important;
+}
+/* --- Image: smaller, curved, black border and space below --- */
+.recent-work-wrap img {
+    display: block !important;
+    width: 100% !important;
+    height: 180px !important;
+    object-fit: cover !important;
+    border-radius: 16px !important;
+    border: 2.5px solid #111 !important;
+    box-sizing: border-box !important;
+    margin-bottom: 14px !important;
+    background: #232323 !important;
+    transition: filter 0.4s !important;
+}
+.recent-work-wrap:hover img {
+    filter: brightness(0.75) blur(1.5px) !important;
+}
+/* --- Overlay: glass, left gold border, always curved --- */
+.overlay {
+    position: absolute !important;
+    top: 0 !important; left: 0 !important;
+    width: 100% !important; height: 100% !important;
+    background: linear-gradient(127deg,rgba(36,37,50,0.78) 80%,rgba(77,79,90,0.13) 100%) !important;
+    backdrop-filter: blur(4.5px) !important;
+    -webkit-backdrop-filter: blur(4.5px) !important;
+    border-left: 5px solid !important;
+    border-image: linear-gradient(180deg,#fffbe9 12%,#ffd700 50%,#fffbe9 92%) 1 !important;
+    opacity: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 16px !important;
+    transition: opacity 0.44s cubic-bezier(.23,1.12,.47,1.09) !important;
+    will-change: opacity;
+    overflow: hidden !important;
+    z-index: 2;
+}
+.recent-work-wrap:hover .overlay {
+    opacity: 1 !important;
+}
+/* --- Animated GOLDEN HORIZONTAL LINE --- */
+.overlay .gold-line {
+    position: absolute !important;
+    left: 0; right: 0;
+    top: 49%;
+    height: 3px;
+    background: linear-gradient(90deg, #ffd700 0%, #fffbe9 100%);
+    border-radius: 2px;
+    box-shadow: 0 1px 6px #ffd70099;
+    transform: translateX(-100%);
+    transition: transform 0.5s cubic-bezier(.16,.68,.42,1.1);
+    z-index: 3;
+    pointer-events: none;
+}
+.recent-work-wrap:hover .overlay .gold-line {
+    transform: translateX(0);
+}
+/* --- Overlay content --- */
+.recent-work-inner {
+    position: relative !important;
+    z-index: 4 !important;
+    width: 100%;
+    text-align: center !important;
+    color: #fff !important;
+    padding: 16px 6px !important;
+}
+.recent-work-inner h3 {
+    font-size: 1.14rem !important;
+    letter-spacing: 0.4px !important;
+    color: #fff !important;
+    margin-bottom: 15px !important;
+    font-weight: 700 !important;
+    text-shadow: 0 1px 14px #292c367a;
+}
+/* --- "View" Button: glass overlay, gold glowing text, compact & centered --- */
+.recent-work-inner a.preview {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    background: rgba(36,37,50,0.43) !important;
+    color: #ffe066 !important;
+    padding: 8px 17px !important;
+    border-radius: 26px !important;
+    font-weight: 700 !important;
+    font-size: 1rem !important;
+    text-decoration: none !important;
+    border: 2px solid rgba(255,215,0,0.08) !important;
+    box-shadow: 0 2px 12px rgba(31,47,70,0.10) !important;
+    transition: color 0.19s, background 0.19s, transform 0.17s, box-shadow 0.21s, border 0.22s !important;
+    margin: 0 auto !important;
+    margin-top: 10px !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-shadow: 0 0 12px #ffe066bb, 0 0 24px #ffd70099 !important;
+    line-height: 1.2 !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    box-sizing: border-box !important;
+}
+.recent-work-inner a.preview:hover,
+.recent-work-inner a.preview:focus {
+    background: rgba(36,37,50,0.59) !important;
+    color: #FFD700 !important;
+    transform: scale(1.06) !important;
+    border: 2px solid #FFD700 !important;
+    box-shadow: 0 0 0 4px #ffd7002a, 0 8px 28px 0 #ffd70022, 0 2px 8px rgba(31,47,70,0.07) !important;
+    text-shadow: 0 0 16px #ffe066dd, 0 0 28px #ffd700cc !important;
+    outline: none !important;
+}
+.recent-work-inner a.preview:active {
+    transform: scale(0.96) !important;
+}
+/* --- Animate overlay content in --- */
+.recent-work-wrap:hover .recent-work-inner {
+    animation: floatUp 0.44s cubic-bezier(.22,.61,.36,1) both !important;
+}
+@keyframes floatUp {
+    from { transform: translateY(36px); opacity: 0;}
+    to   { transform: translateY(0); opacity: 1;}
+}
+</style>
+
 
 </head><!--/head-->
 
@@ -164,7 +326,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/Catch_basin.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -191,7 +353,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/Internal_water_supply.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -218,7 +380,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/plumbing_shaft.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -245,7 +407,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/rain_water.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -272,7 +434,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/Roof_Drainage.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -299,7 +461,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/Terrace_loop1.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -326,7 +488,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/Toilet.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -353,7 +515,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/toilet_drain.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>
@@ -379,7 +541,7 @@
                             <img class="img-responsive" src="images/portfolio/thumbs/PLUMBING/water_supply.jpg" alt="">
 
                             <div class="overlay">
-
+                            <div class="gold-line"></div>
                                 <div class="recent-work-inner">
 
                                     <h3><a href="#">Plumbing Systems</a></h3>

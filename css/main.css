@@ -7,7 +7,7 @@
 
 body {
   background: #fff;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Times New Roman', Times, serif;
   color:#4e4e4e;
   line-height: 22px;
 }
@@ -326,9 +326,9 @@ input.search-form:hover {
   content: "";
   display: block;
   position: absolute;
-  left: 0; right: 0; bottom: 5px;
+  left: 0; right: 0; bottom: 0px;
   height: 3px;
-  background: #c52d2f;
+  background: #efe3e4;
   border-radius: 3px;
   transform: scaleX(0);
   transition: transform 0.3s cubic-bezier(.38,1.15,.7,1.12);
